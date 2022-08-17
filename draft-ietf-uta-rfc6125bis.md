@@ -1009,6 +1009,8 @@ The major changes, in no particular order, include:
 Jeff Hodges co-authored the previous version of these recommendations, {{VERIFY}}.
 The authors gratefully acknowledge his essential contributions to this work.
 
+Martin Thomson contributed the text on IP-IDs.
+
 # Acknowledgements {#acknowledgements}
 {: numbered='false'}
 
