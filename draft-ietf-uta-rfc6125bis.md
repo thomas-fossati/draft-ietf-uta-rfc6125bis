@@ -118,6 +118,14 @@ informative:
     target: https://publicsuffix.org
     title: "Public Suffix List"
     date: 2020
+  SECURE-CONTEXTS:
+    target: https://www.w3.org/TR/secure-contexts/
+    title: Secure Contexts
+    author:
+    - ins: M. West
+      name: Mike West
+      org: W3C
+    date: 2021
   US-ASCII:
     title: Coded Character Set - 7-bit American Standard Code for Information Interchange
     author:
@@ -687,8 +695,9 @@ process. For example, a protocol or application could specify that the applicati
 service type is obtained through a one-to-one mapping of URI schemes to service 
 types or support only a restricted set of URI schemes. Similarly, it could 
 insist that a domain name or IP address taken as input to the reference 
-identifier must be obtained in a secure context such as a hyperlink embedded 
-in a web page that was delivered over an authenticated and encrypted channel.
+identifier must be obtained in a secure context such as a hyperlink embedded in 
+a web page that was delivered over an authenticated and encrypted channel
+(see for instance {{?SECURE-CONTEXTS}} with regard to the web platform).
 
 Naturally, if the inputs themselves are invalid or corrupt (e.g., a user has 
 clicked a hyperlink provided by a malicious entity in a phishing attack),
