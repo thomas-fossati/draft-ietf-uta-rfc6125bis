@@ -687,8 +687,8 @@ portion of a username), a hyperlink in a web page that triggers a browser to
 retrieve a media object or script, or some other combination of information
 that can yield a source domain and an application service type.
 
-This document does not precisely define how reference identifiers are generated,
-and doing so is the responsibility of applications or protocols that use this 
+This document does not precisely define how reference identifiers are generated.
+Defining reference identifiers is the responsibility of applications or protocols that use this 
 document. Because the security of a system that uses this document will depend 
 on how reference identifiers are generated, great care should be taken in this 
 process. For example, a protocol or application could specify that the application 
