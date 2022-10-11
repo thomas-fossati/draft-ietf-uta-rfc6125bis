@@ -57,6 +57,7 @@ informative:
   SIP: RFC3261
   SIP-CERTS: RFC5922
   SIP-SIPS: RFC5630
+  SMTP-TLS: RFC8689
   TLS: RFC8446
   TLS-SUBCERTS: I-D.ietf-tls-subcerts
   VERIFY: RFC6125
@@ -678,30 +679,37 @@ portion of a username), a hyperlink in a web page that triggers a browser to
 retrieve a media object or script, or some other combination of information
 that can yield a source domain and an application service type.
 
-The client might need to extract the source domain and application service
-type from the input(s) it has received.  The extracted data MUST include only
-information that can be securely parsed out of the inputs, such as parsing
-the FQDN or IP address out of the "host" component or deriving the application service type
-from the scheme of a URI.  Other possibilities include pulling the data from
-a delegated domain that is explicitly established via client or system
-configuration or resolving the data via {{DNSSEC}}.
-These considerations apply only to extraction of the source domain from the
-inputs.  Naturally, if the inputs themselves are invalid or corrupt (e.g., a
-user has clicked a link provided by a malicious entity in a phishing attack),
+This document does not precisely define how reference identifiers are generated,
+and doing so is the responsibility of applications or protocols that use this 
+document. Because the security of a system that uses this document will depend 
+on how reference identifiers are generated, great care should be taken in this 
+process. For example, a protocol or application could specify that the application 
+service type is obtained through a one-to-one mapping of URI schemes to service 
+types or support only a restricted set of URI schemes. Similarly, it could 
+insist that a domain name or IP address taken as input to the reference 
+identifier must be obtained in a secure context such as a hyperlink embedded 
+in a web page that was delivered over an authenticated and encrypted channel.
+
+Naturally, if the inputs themselves are invalid or corrupt (e.g., a user has 
+clicked a hyperlink provided by a malicious entity in a phishing attack),
 then the client might end up communicating with an unexpected application
 service.
 
-For example, given an input URI of \<sip:alice@example.net>, a client
-would derive the application service type `sip` from the scheme
-and parse the domain name `example.net` from the host component.
+During the course of processing, a client might be exposed to identifiers that 
+look like but are not reference identifiers. For example, DNS resolution that 
+starts at a DNS-ID reference identifier might produce intermediate domain names 
+that need to be further resolved. Any intermediate values are not reference 
+identifiers and MUST NOT be treated as such, except as defined by the application. 
+In the DNS case, not treating intermediate domain names as reference identifiers 
+removes DNS and DNS resolution from the attack surface. However, an application 
+might define a process for authenticating these intermediate identifiers in a way 
+that then allows them to be used as a reference identifier; see for example 
+{{?SMTP-TLS}}.
 
-Each reference identifier in the list MUST be based on the user inputs and
-MUST NOT be based on a derived domain such as a domain name discovered
-through DNS resolution of those inputs.  This rule is important because
-only a match between the user inputs and a presented identifier enables the
-client to be sure that the certificate can legitimately be used to secure the
-client's communication with the server. This removes
-DNS and DNS resolution from the attack surface.
+As one example of the process of generating a reference identifier, from user 
+input of the URI \<sip:alice@example.net> a client could derive the application 
+service type `sip` from the URI scheme and parse the domain name `example.net` 
+from the host component.
 
 Using the combination of FQDN(s) or IP address(es), plus optionally an application service type, the client
 MUST construct its list of reference identifiers in accordance with the
@@ -723,7 +731,6 @@ following rules:
   FQDN that is (a) contained in or securely derived from the inputs, or
   (b) explicitly associated with the source domain by means of user
   configuration.
-
 
 Which identifier types a client includes in its list of reference
 identifiers, and their priority, is a matter of local policy.  For example, a
