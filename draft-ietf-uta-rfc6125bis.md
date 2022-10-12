@@ -132,7 +132,7 @@ informative:
     date: 1986
     seriesinfo:
       ANSI: X3.4
-  UTS-30:
+  UTS-39:
     target: https://unicode.org/reports/tr39/
     title: Unicode Security Mechanisms Contexts
     author:
