@@ -124,7 +124,6 @@ informative:
     author:
     - ins: M. West
       name: Mike West
-      org: W3C
     date: 2021
   US-ASCII:
     title: Coded Character Set - 7-bit American Standard Code for Information Interchange
@@ -133,6 +132,15 @@ informative:
     date: 1986
     seriesinfo:
       ANSI: X3.4
+  UTS-30:
+    target: https://unicode.org/reports/tr39/
+    title: Unicode Security Mechanisms Contexts
+    author:
+    - ins: M. Davis
+      name: Mark Davis
+    - ins: M. Suignard
+      name: Michel Suignard
+    date: 2022
   X.509:
     title: >
      Information Technology - Open Systems Interconnection -
@@ -697,7 +705,7 @@ types or support only a restricted set of URI schemes. Similarly, it could
 insist that a domain name or IP address taken as input to the reference 
 identifier must be obtained in a secure context such as a hyperlink embedded in 
 a web page that was delivered over an authenticated and encrypted channel
-(see for instance {{?SECURE-CONTEXTS}} with regard to the web platform).
+(see for instance {{SECURE-CONTEXTS}} with regard to the web platform).
 
 Naturally, if the inputs themselves are invalid or corrupt (e.g., a user has 
 clicked a hyperlink provided by a malicious entity in a phishing attack),
